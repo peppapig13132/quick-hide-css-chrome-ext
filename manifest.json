@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Quick Hide: CSS Selector",
+    "version": "1.0",
+    "description": "Instantly hide or restore webpage elements using CSS selectors. Apply changes without reloading the page and customize your browsing experience effortlessly.",
+    "permissions": ["scripting", "activeTab", "storage"],
+    "host_permissions": ["https://www.ebay.com/*"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+        }
+    }
+}
