@@ -3,7 +3,7 @@
 <head>
     <title>Quick Hide: CSS Selector</title>
     <style>
-        body, h3, p, textarea, button {
+        body, h3, p, input, textarea, button {
             font-family: San Francisco,BlinkMacSystemFont,system,-apple-system,\.AppleSystemUIFont,\.SFNSDisplay-Regular,Roboto,Segoe UI,Helvetica Neue,Ubuntu,Lucida Grande,Helvetica,Arial,sans-serif;
         }
         body {padding: 15px;
@@ -19,17 +19,28 @@
             text-align: center;
             color: #333;
         }
-        textarea {
+        input {
             width: -webkit-fill-available;
-            height: 120px;
-            padding: 8px;
+            padding: 6px;
             border: 1px solid #ccc;
             border-radius: 5px;
             resize: none;
             font-size: 14px;
             background-color: #fff;
         }
+        textarea {
+            width: -webkit-fill-available;
+            height: 120px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        input:focus-visible,
         textarea:focus-visible {
+            outline: unset;
             border-color: #888;
         }
         button {
@@ -60,6 +71,8 @@
 </head>
 <body>
     <h3>Quick Hide: CSS Selector</h3>
+    <p>Enter domain</p>
+    <input type="text" id="domain" placeholder="For example, www.ebay.com" />
     <p>Enter CSS selectors to hide elements with a comma.</p>
     <textarea id="selectors" placeholder="For example, #ELEMENT_ID, .CLASS-NAME, TAGNAME"></textarea>
     <button id="activate">Activate</button>
