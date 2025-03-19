@@ -4,7 +4,7 @@
     "version": "1.0",
     "description": "Instantly hide or restore webpage elements using CSS selectors. Apply changes without reloading the page and customize your browsing experience effortlessly.",
     "permissions": ["scripting", "activeTab", "storage"],
-    "host_permissions": ["https://www.ebay.com/*"],
+    "host_permissions": ["<all_urls>"],
     "background": {
         "service_worker": "background.js"
     },

@@ -1,15 +1,15 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "hideElements") {
-        chrome.storage.local.set({ selectors: request.selectors }, () => {
+        chrome.storage.local.set({ domain: request.domain, selectors: request.selectors }, () => {
             applySelectors(sender.tab.id, request.selectors);
         });
     }
 });
   
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === "complete" && tab.url.includes("www.ebay.com")) {
-        chrome.storage.local.get("selectors", (data) => {
-            if (data.selectors) {
+    if (changeInfo.status === "complete") {
+        chrome.storage.local.get(["domain", "selectors"], (data) => {
+            if (data.domain && data.selectors && tab.url.includes(data.domain)) {
                 applySelectors(tabId, data.selectors);
             }
         });
@@ -35,10 +35,8 @@ function hideElementsWithObserver(selectors) {
         });
     }
 
-    // Hide elements initially
     hideMatchingElements();
 
-    // Observe changes in the DOM and hide new elements dynamically
     const observer = new MutationObserver(() => {
         hideMatchingElements();
     });
